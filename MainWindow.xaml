@@ -1,0 +1,39 @@
+﻿<Window x:Class="iLabTicketMgr.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iLabTicketMgr"
+        xmlns:control="http://filterdatagrid.control.com/2021"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Ribbon x:Name="menuRibbon" SelectedIndex="0">
+            <RibbonTab Header="Home" KeyTip="H">
+                <RibbonGroup Header="Data Sources">
+                    <RibbonButton LargeImageSource="Images/Datalist_64x.png" Label="Import Ticket Data" Click="ImportCSV_OnClick">
+                        
+                    </RibbonButton>
+                </RibbonGroup>
+                <RibbonGroup Header="Data View">
+                    <RibbonTextBox Label="Max Data Rows" Text="50" LostKeyboardFocus="UpdateNumRows" Width="177" Height="24" VerticalAlignment="Top"/>
+                    <RibbonButton Label="Run Custom SQL" SmallImageSource="Images/SqlScript_16x.png" Width="173" Click="RunSQL_OnClick"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        
+        <ScrollViewer Grid.Row="1">
+            <control:FilterDataGrid x:Name="ticketDataGrid" ShowStatusBar="True" ShowElapsedTime="False" 
+                                    DateFormatString="g"  FilterLanguage="English" ItemsSource="{Binding VisibleTickets}"> 
+                <control:FilterDataGrid.RowStyleSelector>
+                    
+                </control:FilterDataGrid.RowStyleSelector>
+            </control:FilterDataGrid>   
+        </ScrollViewer>
+    </Grid>
+</Window>
