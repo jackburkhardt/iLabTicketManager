@@ -20,26 +20,36 @@ namespace iLabTicketMgr;
 public partial class MainWindow : Window
 {
     public static Database DB { get; set; } = new Database();
+    public ObservableCollection<TabContentControl> Tabs { get; set; } = [];
     
     public MainWindow()
     {
         DataContext = this;
         InitializeComponent();
+        Loaded += (s, e) =>
+        {
+            Tabs.Add(new TicketListView());
+        };
     }
     
 
     private void TicketListView_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        Tabs.Add(new TicketListView());
     }
 
     private void ChartView_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        Tabs.Add(new ChartView());
     }
 
     private void DashboardView_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        Tabs.Add(new DashboardView());
+    }
+
+    private void CloseTabClicked(object sender, RoutedEventArgs e)
+    {
+        Tabs.Remove((TabContentControl)((RibbonButton)sender).Tag);
     }
 }

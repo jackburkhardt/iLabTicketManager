@@ -1,9 +1,11 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
 
 namespace iLabTicketMgr;
 
 public class TabContentControl : UserControl
 {
-    public List<RibbonGroup> MenuGroups { get; set; } = new();
+    public ObservableCollection<RibbonGroup> MenuGroups { get; set; } = new();
+    public virtual string TabHeader { get; set; } = "Tab";
 }

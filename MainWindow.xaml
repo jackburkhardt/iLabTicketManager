@@ -12,7 +12,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Ribbon x:Name="menuRibbon" SelectedIndex="0" Margin="0,-48,0,0">
@@ -27,8 +26,26 @@
             </RibbonTab>
         </Ribbon>
         
-        <TabControl Grid.Row="1">
-            
+        <TabControl Grid.Row="1" x:Name="TabView" ItemsSource="{Binding Tabs}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Text="grfargreg" Padding="0,0,8,0"/>
+                        <Button Click="CloseTabClicked">
+                            <Button.Content>
+                                <Image Source="Images/CloseSolution_16x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate DataType="{x:Type local:TabContentControl}">
+                    <ScrollViewer>
+                        <ContentControl Content="{Binding Content}" VerticalAlignment="Stretch"/>
+                    </ScrollViewer>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
         </TabControl>
         
     </Grid>
