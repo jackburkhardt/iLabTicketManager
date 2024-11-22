@@ -43,29 +43,37 @@
       <Resource Include="Images\AddDataSource_16x.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
-      <Resource Include="Images\AddDataSource_16x.svg">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Resource>
-      <Resource Include="Images\AddDataSource_16x.xaml">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Resource>
       <Resource Include="Images\SQLScript_16x.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
       <None Remove="Images\Datalist_64x.png" />
-      <Resource Include="Images\Datalist_64x.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Resource>
       <None Remove="Databases\iLabTicketMgr.db" />
       <Resource Include="Databases\iLabTicketMgr.db">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
       <None Remove="Images\White_Chicken.png" />
-      <Resource Include="Images\White_Chicken.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Resource>
       <None Remove="Images\White_Chicken.ico" />
       <Resource Include="Images\White_Chicken.ico">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\AddNestedTable_64x.png" />
+      <Resource Include="Images\AddNestedTable_64x.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\Table_32x.png" />
+      <Resource Include="Images\Table_32x.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\Gauge_32xLG.png" />
+      <Resource Include="Images\Gauge_32xLG.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\ColumnChart_32x.png" />
+      <Resource Include="Images\ColumnChart_32x.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\AddWatch_32x.png" />
+      <Resource Include="Images\AddWatch_32x.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
     </ItemGroup>

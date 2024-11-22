@@ -4,44 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:iLabTicketMgr"
-        xmlns:control="http://filterdatagrid.control.com/2021"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Icon="Images/White_Chicken.ico"
         Title="iLab Ticketing" Height="800" Width="1100">
-    <Window.Resources>
-        <local:TicketRowConverter x:Key="TicketRowConverter"/>
-    </Window.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Ribbon x:Name="menuRibbon" SelectedIndex="0">
+        <Ribbon x:Name="menuRibbon" SelectedIndex="0" Margin="0,-48,0,0">
             <RibbonTab Header="Home" KeyTip="H">
-                <RibbonGroup Header="Data Sources">
-                    <RibbonButton LargeImageSource="Images/Datalist_64x.png" Label="Import Ticket Data" Click="ImportCSV_OnClick">
-                        
-                    </RibbonButton>
-                </RibbonGroup>
-                <RibbonGroup Header="Data View">
-                    <RibbonTextBox Label="Max Data Rows" Text="50" LostKeyboardFocus="UpdateNumRows" Width="177" Height="24" VerticalAlignment="Top"/>
-                    <RibbonButton Label="Run Custom SQL" SmallImageSource="Images/SqlScript_16x.png" Width="173" Click="RunSQL_OnClick"/>
+                <RibbonGroup>
+                    <RibbonMenuButton Label="New View" LargeImageSource="Images/AddWatch_32x.png">
+                        <RibbonMenuItem ImageSource="Images/Table_32x.png" Header="Ticket List View" Click="TicketListView_OnClick"/>
+                        <RibbonMenuItem ImageSource="Images/ColumnChart_32x.png" Header="Chart View" Click="ChartView_OnClick"/>
+                        <RibbonMenuItem ImageSource="Images/Gauge_32xLG.png"  Header="Dashboard View" Click="DashboardView_OnClick"/>
+                    </RibbonMenuButton>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
         
-        <ScrollViewer Grid.Row="1">
-            <control:FilterDataGrid x:Name="ticketDataGrid" ShowStatusBar="True" CanUserAddRows="false"
-                                    ShowElapsedTime="True" DateFormatString="g"  FilterLanguage="English" 
-                                    ItemsSource="{Binding VisibleTickets}"> 
-                <control:FilterDataGrid.RowStyle>
-                    <Style TargetType="{x:Type DataGridRow}">
-                        <Setter Property="Background" Value="{Binding Path=., Converter={StaticResource TicketRowConverter}}"/>
-                    </Style>
-                </control:FilterDataGrid.RowStyle> 
-            </control:FilterDataGrid>
-        </ScrollViewer>
+        <TabControl Grid.Row="1">
+            
+        </TabControl>
+        
     </Grid>
 </Window>
