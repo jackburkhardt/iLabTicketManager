@@ -7,7 +7,12 @@
         xmlns:control="http://filterdatagrid.control.com/2021"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="MainWindow" Height="450" Width="800">
+        Icon="Images/White_Chicken.ico"
+        Title="iLab Ticketing" Height="800" Width="1100">
+    <Window.Resources>
+        <local:TicketRowConverter x:Key="TicketRowConverter"/>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -28,12 +33,15 @@
         </Ribbon>
         
         <ScrollViewer Grid.Row="1">
-            <control:FilterDataGrid x:Name="ticketDataGrid" ShowStatusBar="True" ShowElapsedTime="False" 
-                                    DateFormatString="g"  FilterLanguage="English" ItemsSource="{Binding VisibleTickets}"> 
-                <control:FilterDataGrid.RowStyleSelector>
-                    
-                </control:FilterDataGrid.RowStyleSelector>
-            </control:FilterDataGrid>   
+            <control:FilterDataGrid x:Name="ticketDataGrid" ShowStatusBar="True" CanUserAddRows="false"
+                                    ShowElapsedTime="True" DateFormatString="g"  FilterLanguage="English" 
+                                    ItemsSource="{Binding VisibleTickets}"> 
+                <control:FilterDataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Setter Property="Background" Value="{Binding Path=., Converter={StaticResource TicketRowConverter}}"/>
+                    </Style>
+                </control:FilterDataGrid.RowStyle> 
+            </control:FilterDataGrid>
         </ScrollViewer>
     </Grid>
 </Window>

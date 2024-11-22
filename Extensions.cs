@@ -14,7 +14,7 @@ public static class Extensions
             Status = reader.GetString(1),
             DateCreated = reader.GetDateTime(2),
             DateModified = reader.GetDateTime(3),
-            Contacts = reader.GetString(4).Split(','),
+            Contacts = reader.GetString(4),
             Subject = reader.GetString(5),
             Type = reader.GetString(6),
             SubType = reader.GetString(7),

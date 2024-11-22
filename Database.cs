@@ -8,7 +8,7 @@ public class Database
 
     public Database()
     {
-        _conn = new SQLiteConnection(@"Data Source=C:\Projects\iLabTicketMgr\Databases\iLabTicketMgr.db");
+        _conn = new SQLiteConnection(@"Data Source=C:\Projects\iLabTicketManager\Databases\iLabTicketMgr.db");
         _conn.Open();
     }
 
@@ -33,8 +33,7 @@ public class Database
         query.Parameters.AddWithValue("@status", ticket.Status);
         query.Parameters.AddWithValue("@created", ticket.DateCreated);
         query.Parameters.AddWithValue("@modified", ticket.DateModified);
-        var contactString = ticket.Contacts.Aggregate("", (current, contact) => (current != "" ? current + "," : "") + contact);
-        query.Parameters.AddWithValue("@contacts", contactString);
+        query.Parameters.AddWithValue("@contacts", ticket.Contacts);
         query.Parameters.AddWithValue("@subject", ticket.Subject);
         query.Parameters.AddWithValue("@type", ticket.Type);
         query.Parameters.AddWithValue("@subtype", ticket.SubType);

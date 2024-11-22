@@ -12,7 +12,7 @@ public class Ticket
     public DateTime DateCreated { get; set; }
     public DateTime DateModified { get; set; }
     public DateTime? DateClosed { get; set; }
-    public string[] Contacts { get; set; }
+    public string Contacts { get; set; }
 }
 
 public static class TicketReader
@@ -36,7 +36,7 @@ public static class TicketReader
                Status = fields[0],
                DateCreated = DateTime.Parse(fields[1]),
                DateModified = DateTime.Parse(fields[2]),
-               Contacts = fields[4].Split(",").Select(s => s.Trim()).ToArray(),
+               Contacts = fields[4],
                Number = int.Parse(fields[5]),
                Subject = fields[6],
                Type = fields[7],

@@ -56,6 +56,18 @@
       <Resource Include="Images\Datalist_64x.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
+      <None Remove="Databases\iLabTicketMgr.db" />
+      <Resource Include="Databases\iLabTicketMgr.db">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\White_Chicken.png" />
+      <Resource Include="Images\White_Chicken.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\White_Chicken.ico" />
+      <Resource Include="Images\White_Chicken.ico">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
 </Project>

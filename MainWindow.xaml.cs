@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -78,5 +79,34 @@ public partial class MainWindow : Window
     {
         var popup = new UserSQLPopup();
         popup.ShowDialog();
+    }
+}
+
+public class TicketRowConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        var ticket = (Ticket)value;
+        if (ticket.Status.Contains("Closed"))
+        {
+            return Brushes.LightSlateGray;
+        }
+        else if (ticket.DateModified < DateTime.Now.AddDays(-3))
+        {
+            return Brushes.LightCoral;
+        }
+        else if (ticket.DateModified < DateTime.Now.AddDays(-1))
+        {
+            return Brushes.PaleGoldenrod;
+        }
+        else
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
     }
 }
