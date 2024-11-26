@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:iLabTicketMgr"
         mc:Ignorable="d"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Icon="Images/White_Chicken.ico"
         Title="iLab Ticketing" Height="800" Width="1100">
     
@@ -14,24 +13,25 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Ribbon x:Name="menuRibbon" SelectedIndex="0" Margin="0,-48,0,0">
-            <RibbonTab Header="Home" KeyTip="H">
+        <Ribbon SelectedIndex="0" Margin="0,-48,0,0">
+            <RibbonTab Header="Home" KeyTip="H"  x:Name="menuRibbon">
                 <RibbonGroup>
                     <RibbonMenuButton Label="New View" LargeImageSource="Images/AddWatch_32x.png">
                         <RibbonMenuItem ImageSource="Images/Table_32x.png" Header="Ticket List View" Click="TicketListView_OnClick"/>
                         <RibbonMenuItem ImageSource="Images/ColumnChart_32x.png" Header="Chart View" Click="ChartView_OnClick"/>
                         <RibbonMenuItem ImageSource="Images/Gauge_32xLG.png"  Header="Dashboard View" Click="DashboardView_OnClick"/>
                     </RibbonMenuButton>
+                    <RibbonButton LargeImageSource="Images/AddNestedTable_64x.png" Label="Import Ticket Data" Click="ImportCSV_OnClick"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
         
-        <TabControl Grid.Row="1" x:Name="TabView" ItemsSource="{Binding Tabs}">
+        <TabControl Grid.Row="1" x:Name="TabView" ItemsSource="{Binding Path=Tabs,  RelativeSource={RelativeSource AncestorType=local:MainWindow}}" SelectionChanged="OnTabSelectionChanged">
             <TabControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <TextBlock Text="grfargreg" Padding="0,0,8,0"/>
-                        <Button Click="CloseTabClicked">
+                        <TextBlock Text="{Binding Header}" Padding="0,0,8,0"/>
+                        <Button Command="Close" Click="CloseTabClicked">
                             <Button.Content>
                                 <Image Source="Images/CloseSolution_16x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             </Button.Content>

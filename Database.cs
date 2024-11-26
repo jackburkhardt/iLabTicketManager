@@ -8,7 +8,7 @@ public class Database
 
     public Database()
     {
-        _conn = new SQLiteConnection(@"Data Source=C:\Projects\iLabTicketManager\Databases\iLabTicketMgr.db");
+        _conn = new SQLiteConnection(@"Data Source=Databases\iLabTicketMgr.db");
         _conn.Open();
     }
 

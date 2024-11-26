@@ -6,14 +6,14 @@
              xmlns:local="clr-namespace:iLabTicketMgr"
              xmlns:filtergrid="http://filterdatagrid.control.com/2021"
              mc:Ignorable="d"
+             TabHeader="List View"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
              d:DesignHeight="300" d:DesignWidth="300">
     <local:TabContentControl.Resources>
         <local:TicketRowConverter x:Key="TicketRowConverter"/>
     </local:TabContentControl.Resources>
+    
     <local:TabContentControl.MenuGroups>
-        <RibbonGroup Header="Data Sources">
-            <RibbonButton LargeImageSource="Images/AddNestedTable_64x.png" Label="Import Ticket Data" Click="ImportCSV_OnClick"/>
-        </RibbonGroup>
         <RibbonGroup Header="Data View">
             <RibbonTextBox Label="Max Data Rows" Text="50" LostKeyboardFocus="UpdateNumRows" Width="177" Height="24" VerticalAlignment="Top"/>
             <RibbonButton Label="Run Custom SQL" SmallImageSource="Images/SqlScript_16x.png" Width="173" Click="RunSQL_OnClick"/>

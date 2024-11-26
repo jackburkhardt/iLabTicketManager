@@ -11,7 +11,6 @@ namespace iLabTicketMgr;
 public partial class TicketListView : TabContentControl
 {
     public ObservableCollection<Ticket> VisibleTickets { get; set; } = [];
-    public override string TabHeader { get; set; } = "Tickets";
 
     public TicketListView()
     {

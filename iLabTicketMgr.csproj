@@ -48,9 +48,9 @@
       </Resource>
       <None Remove="Images\Datalist_64x.png" />
       <None Remove="Databases\iLabTicketMgr.db" />
-      <Resource Include="Databases\iLabTicketMgr.db">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Resource>
+      <AdditionalFiles Include="Databases\iLabTicketMgr.db">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AdditionalFiles>
       <None Remove="Images\White_Chicken.png" />
       <None Remove="Images\White_Chicken.ico" />
       <Resource Include="Images\White_Chicken.ico">
