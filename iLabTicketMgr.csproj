@@ -49,7 +49,7 @@
       <None Remove="Images\Datalist_64x.png" />
       <None Remove="Databases\iLabTicketMgr.db" />
       <AdditionalFiles Include="Databases\iLabTicketMgr.db">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </AdditionalFiles>
       <None Remove="Images\White_Chicken.png" />
       <None Remove="Images\White_Chicken.ico" />

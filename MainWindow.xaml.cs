@@ -27,15 +27,15 @@ public partial class MainWindow : Window
         InitializeComponent();
         Loaded += (s, e) =>
         {
-            var content = new TicketListView();
-            var vm = new TabViewModel()
-            {
-                Content = content,
-                Header = content.TabHeader,
-                MenuItems = content.MenuGroups
-            };
-        
-            AddTab(vm);
+            // var content = new TicketListView();
+            // var vm = new TabViewModel()
+            // {
+            //     Content = content,
+            //     Header = content.TabHeader,
+            //     MenuItems = content.MenuGroups
+            // };
+            //
+            // AddTab(vm);
         };
     }
     
@@ -56,7 +56,7 @@ public partial class MainWindow : Window
                 MainWindow.DB.UpsertTicket(ticket);
             }
             
-            ((TabViewModel)TabView.SelectedContent).Content.RefreshView();
+            ((TabViewModel)TabView.SelectedItem).Content.RefreshView();
             
         }
     }
@@ -77,7 +77,14 @@ public partial class MainWindow : Window
 
     private void ChartView_OnClick(object sender, RoutedEventArgs e)
     {
-        //Tabs.Add(new ChartView());
+        var view = new ChartView();
+        var vm = new TabViewModel()
+        {
+            Content = view,
+            Header = view.TabHeader,
+            MenuItems = view.MenuGroups
+        };
+        AddTab(vm);
     }
 
     private void DashboardView_OnClick(object sender, RoutedEventArgs e)
@@ -103,19 +110,25 @@ public partial class MainWindow : Window
 
     private void OnTabSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (e.RemovedItems.Count == 0) return;
+        if (e.OriginalSource is not TabControl) return;
         
         var newTab = e.AddedItems.Cast<TabViewModel>().FirstOrDefault();
         var lastTab = e.RemovedItems.Cast<TabViewModel>().FirstOrDefault();
 
-        foreach (var oldGroup in lastTab.MenuItems)
+        if (lastTab != null)
         {
-            oldGroup.Visibility = Visibility.Collapsed;
+            foreach (var oldGroup in lastTab.MenuItems)
+            {
+                oldGroup.Visibility = Visibility.Collapsed;
+            }
         }
 
-        foreach (var newGroup in newTab.MenuItems)
+        if (newTab != null)
         {
-            newGroup.Visibility = Visibility.Visible;
+            foreach (var newGroup in newTab.MenuItems)
+            {
+                newGroup.Visibility = Visibility.Visible;
+            }
         }
     }
 

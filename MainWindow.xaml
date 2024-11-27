@@ -30,8 +30,8 @@
             <TabControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <TextBlock Text="{Binding Header}" Padding="0,0,8,0"/>
-                        <Button Command="Close" Click="CloseTabClicked">
+                        <TextBlock Text="{Binding Header}" Padding="0,0,15,0"/>
+                        <Button Click="CloseTabClicked" BorderThickness="0">
                             <Button.Content>
                                 <Image Source="Images/CloseSolution_16x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             </Button.Content>
