@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:iLabTicketMgr"
              xmlns:filtergrid="http://filterdatagrid.control.com/2021"
+             xmlns:iLabTicketMgr="clr-namespace:iLabTicketMgr"
              mc:Ignorable="d"
              TabHeader="List View"
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
@@ -22,13 +23,13 @@
     
     <Grid>
         <filtergrid:FilterDataGrid x:Name="ticketDataGrid" ShowStatusBar="True" CanUserAddRows="false"
-                                ShowElapsedTime="True" DateFormatString="g"  FilterLanguage="English" 
-                                ItemsSource="{Binding VisibleTickets}"> 
+                                ShowElapsedTime="True" DateFormatString="g"  FilterLanguage="English"
+                                ItemsSource="{Binding VisibleTickets}">
             <filtergrid:FilterDataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Setter Property="Background" Value="{Binding Path=., Converter={StaticResource TicketRowConverter}}"/>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="{Binding ., Converter={StaticResource TicketRowConverter}}"/>
                 </Style>
-            </filtergrid:FilterDataGrid.RowStyle> 
+            </filtergrid:FilterDataGrid.RowStyle>
         </filtergrid:FilterDataGrid>
     </Grid>
 </local:TabContentControl>
